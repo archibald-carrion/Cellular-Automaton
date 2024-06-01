@@ -68,13 +68,13 @@ class GameOfLife:
                         x, y = pygame.mouse.get_pos()
                         col = x // self.cell_width
                         row = y // self.cell_height
-                        grid[row][col] = 1 if grid[row][col] == 0 else 0
+                        self.grid[row][col] = 1 if self.grid[row][col] == 0 else 0
 
             if not paused:
-                grid = self.update_grid(grid)
+                self.rid = self.update_grid(self.grid)
 
             self.window.fill(self.BLACK)
-            self.draw_grid(self.window, grid)
+            self.draw_grid(self.window, self.grid)
             pygame.display.flip()
 
             pygame.time.delay(100)

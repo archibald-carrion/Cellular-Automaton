@@ -17,46 +17,11 @@ if errorlevel 1 (
     del python-installer.exe
 )
 
-REM Check if the necessary packages are installed
-pip3 show customtkinter >nul 2>&1
-if errorlevel 1 (
-    echo customtkinter is not installed. Installing...
-    pip3 install customtkinter
-)
-
-pip3 show psutil >nul 2>&1
-if errorlevel 1 (
-    echo psutil is not installed. Installing...
-    pip3 install psutil
-)
-
 pip3 show pygame >nul 2>&1
 if errorlevel 1 (
     echo pygame is not installed. Installing...
     pip3 install pygame
 )
 
-pip3 show tkinter >nul 2>&1
-if errorlevel 1 (
-    echo tkinter is not installed. Installing...
-    pip3 install tkinter
-)
-
-REM Determine which argument was provided and set the corresponding parameter
-set param=customtkinter
-if "%1"=="" (
-    echo No argument provided. Using default: customtkinter
-) else (
-    if "%1"=="pygame" (
-        set param=pygame
-    ) else if "%1"=="tkinter" (
-        set param=tkinter
-    ) else if "%1"=="customtkinter" (
-        set param=customtkinter
-    ) else (
-        echo Invalid argument provided. Using default: customtkinter
-    )
-)
-
 REM Run your Python app with the determined parameter
-python main.py %param%
+python main.py
